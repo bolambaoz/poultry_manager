@@ -1,4 +1,4 @@
-# poultry_to_list
+# poultry_manager
 
 A new Flutter project.
 
