@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:poultry_to_list/data/Data.dart';
+import 'package:poultry_to_list/data/model/daily_task.dart';
+import 'package:poultry_to_list/data/model/feeding.dart';
+import 'package:poultry_to_list/data/model/watering.dart';
+import 'package:poultry_to_list/data/model/weekly_task.dart';
 import 'package:poultry_to_list/views/dialog_builder.dart';
 import 'package:poultry_to_list/views/poultry_list.dart';
 

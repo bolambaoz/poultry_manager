@@ -1,6 +1,11 @@
 // ignore: file_names
 // ignore_for_file: file_names
 
+import 'package:poultry_to_list/data/model/daily_task.dart';
+import 'package:poultry_to_list/data/model/egg_collection.dart';
+import 'package:poultry_to_list/data/model/feeding.dart';
+import 'package:poultry_to_list/data/model/watering.dart';
+
 var eggCollection = EggCollection(
     numberOfEgg: 0,
     sizeXXL: 0,
@@ -31,79 +36,4 @@ class AppVar {
   static var currentWeek = 4;
   static var currentDay = 1;
   static var startDate = null;
-}
-
-class WeeklyTask {
-  int numWeek;
-  int currentDay;
-  int currentWeek;
-  List<DailyTask> dailyTask;
-
-  WeeklyTask({
-    required this.numWeek,
-    required this.currentDay,
-    required this.currentWeek,
-    required this.dailyTask,
-  });
-}
-
-class DailyTask {
-  String day;
-  Feeding feed;
-  EggCollection eggCollection;
-
-  //List<Track> tracks;
-
-  DailyTask({
-    required this.day,
-    required this.feed,
-    required this.eggCollection,
-    // this.tracks,
-  });
-}
-
-class Feeding {
-  num feedsGrams;
-  Watering watering;
-
-  Feeding({
-    required this.feedsGrams,
-    required this.watering,
-  });
-}
-
-class Watering {
-  num doximol;
-  num premoxil;
-  num sulforQr;
-  num egg1000;
-  num vitMenPro;
-
-  Watering({
-    required this.doximol,
-    required this.premoxil,
-    required this.sulforQr,
-    required this.egg1000,
-    required this.vitMenPro,
-  });
-}
-
-class EggCollection {
-  int numberOfEgg;
-  int sizeXXL;
-  int sizeXL;
-  int sizeL;
-  int sizeM;
-  int sizeS;
-  int sizeXS;
-
-  EggCollection({
-    required this.numberOfEgg,
-    required this.sizeXXL,
-    required this.sizeXL,
-    required this.sizeL,
-    required this.sizeM,
-    required this.sizeS,
-    required this.sizeXS,
-  });
 }
