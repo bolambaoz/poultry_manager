@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:poultry_to_list/data/Data.dart';
+import 'package:poultry_to_list/pages/daily_task_route.dart';
 import 'package:poultry_to_list/views/todo_cell.dart';
 
 class HomePage extends StatefulWidget {
@@ -12,35 +13,103 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List<WeeklyTask> weekTask = [];
 
-  void data() {
-    var tempCount = 1;
-    for (var i = 1; i <= 20; i++) {
-      List<DailyTask> mtask = [];
-      for (var j = 1; j <= 7; j++) {
-        mtask.add(DailyTask(
-            day: "Day $tempCount",
-            f1: feeding,
-            f2: feeding,
-            f3: feeding,
-            egg1: eggCollection,
-            egg2: eggCollection));
-        tempCount++;
-      }
-      weekTask.add(WeeklyTask(
-          numWeek: i,
-          dailyTask: mtask,
-          currentDay: AppVar.currentDay,
-          currentWeek: AppVar.currentWeek));
-    }
-  }
+  // Watering initialWatering(int dayIndx) {
+  //   Watering mixWater = Watering(
+  //       doximol: 0, premoxil: 0, sulforQr: 0, egg1000: 0, vitMenPro: 0);
+  //   switch (dayIndx) {
+  //     case 1:
+  //       mixWater.vitMenPro = medicineGrams;
+  //     case 2:
+  //       mixWater.doximol = medicineGrams;
+  //     case 3:
+  //       mixWater.vitMenPro = medicineGrams;
+  //       mixWater.premoxil = medicineGrams;
+  //     case 4:
+  //       mixWater.vitMenPro = medicineGrams;
+  //     case 5:
+  //       mixWater.vitMenPro = medicineGrams;
+  //     case 6:
+  //       mixWater.sulforQr = medicineGrams;
+  //     case 7:
+  //       mixWater.vitMenPro = medicineGrams;
+  //   }
+  //   return mixWater;
+  // }
 
-  @override
-  void initState() {
-    super.initState();
-    setState(() {
-      data();
-    });
-  }
+  // Feeding setupFeedingPeriod(int weekIndx, int dayIndx) {
+  //   var watering = Watering(
+  //       doximol: medicineGrams,
+  //       premoxil: medicineGrams,
+  //       sulforQr: medicineGrams,
+  //       egg1000: medicineGrams,
+  //       vitMenPro: medicineGrams);
+
+  //   var _feeding = Feeding(
+  //       feedsGrams: ((AppVar.numberOfHeads * feedsPerHeads) * 0.001),
+  //       watering: watering);
+
+  //   _feeding.watering.doximol = 0;
+  //   _feeding.watering.premoxil = 0;
+  //   _feeding.watering.sulforQr = 0;
+  //   _feeding.watering.egg1000 = 0;
+  //   _feeding.watering.vitMenPro = 0;
+
+  //   switch (weekIndx) {
+  //     case 1:
+  //       _feeding.watering = initialWatering(dayIndx);
+  //     case 2:
+  //       _feeding.watering = initialWatering(dayIndx);
+  //     case 3:
+  //       _feeding.watering = initialWatering(dayIndx);
+  //     case 4:
+  //       _feeding.watering = initialWatering(dayIndx);
+  //     case 5:
+  //       break;
+  //     case 6:
+  //       break;
+  //     default:
+  //       if (dayIndx == 6) {
+  //         switch (dayIndx) {
+  //           case 1:
+  //             _feeding.watering.vitMenPro = medicineGrams;
+  //           case 3:
+  //             _feeding.watering.premoxil = medicineGrams;
+  //           case 6:
+  //             _feeding.watering.sulforQr = medicineGrams;
+  //         }
+  //       } else {
+  //         _feeding.watering.vitMenPro = medicineGrams;
+  //       }
+  //   }
+  //   return _feeding;
+  // }
+
+  // void data() {
+  //   var tempCount = 1;
+  //   for (var i = 1; i <= 20; i++) {
+  //     List<DailyTask> mtask = [];
+  //     for (var j = 1; j <= 7; j++) {
+  //       mtask.add(DailyTask(
+  //           day: "Day $tempCount",
+  //           feed: setupFeedingPeriod(i, j),
+  //           eggCollection: eggCollection));
+  //       tempCount++;
+  //     }
+  //     weekTask.add(WeeklyTask(
+  //         numWeek: i,
+  //         dailyTask: mtask,
+  //         currentDay: AppVar.currentDay,
+  //         currentWeek: AppVar.currentWeek));
+  //   }
+  // }
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   setState(() {
+  //     data();
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -68,12 +137,24 @@ class _HomePageState extends State<HomePage> {
                 shrinkWrap: true,
                 children: List.generate(
                     weekTask[AppVar.currentWeek - 1].dailyTask.length, (index) {
-                  return TodoCell(
-                    day: weekTask[AppVar.currentWeek - 1]
-                        .dailyTask[index]
-                        .f1
-                        .feedsGrams
-                        .toString(),
+                  return InkWell(
+                    onTap: () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => DailyTaskRoute(
+                                  dailyTask: weekTask[AppVar.currentWeek - 1]
+                                      .dailyTask[index],
+                                  day: weekTask[AppVar.currentWeek - 1]
+                                      .dailyTask[index]
+                                      .day,
+                                )),
+                      )
+                    },
+                    child: TodoCell(
+                      day:
+                          weekTask[AppVar.currentWeek - 1].dailyTask[index].day,
+                    ),
                   );
                 }),
               ),

@@ -11,9 +11,9 @@ class TodoCell extends StatelessWidget {
       padding: const EdgeInsets.all(12),
       child: Container(
         padding: EdgeInsets.all(24),
-        child: Text(day),
         decoration: BoxDecoration(
             color: Colors.amberAccent, borderRadius: BorderRadius.circular(12)),
+        child: Text(day),
       ),
     );
   }

@@ -11,7 +11,7 @@ var eggCollection = EggCollection(
     sizeXS: 0);
 
 var totalWaterInLiters = AppVar.numberOfHeads * 0.1;
-var medicineGrams = (totalWaterInLiters / 5) * 5;
+var medicineGrams = (totalWaterInLiters / 4) * 5;
 var feedsPerHeads = 115.0;
 
 var watering = Watering(
@@ -22,21 +22,22 @@ var watering = Watering(
     vitMenPro: medicineGrams);
 
 var feeding = Feeding(
-    feedsGrams: ((AppVar.numberOfHeads * feedsPerHeads) * 0.001) / 50.0,
+    feedsGrams: ((AppVar.numberOfHeads * feedsPerHeads) * 0.001),
     watering: watering);
 
 class AppVar {
   static var numberOfHeads = 800.0;
   static var amountOfWater = numberOfHeads / 0.1;
-  static var currentWeek = 1;
+  static var currentWeek = 4;
   static var currentDay = 1;
+  static var startDate = null;
 }
 
 class WeeklyTask {
-  final int numWeek;
-  final int currentDay;
-  final int currentWeek;
-  final List<DailyTask> dailyTask;
+  int numWeek;
+  int currentDay;
+  int currentWeek;
+  List<DailyTask> dailyTask;
 
   WeeklyTask({
     required this.numWeek,
@@ -47,29 +48,23 @@ class WeeklyTask {
 }
 
 class DailyTask {
-  final String day;
-  final Feeding f1;
-  final Feeding f2;
-  final Feeding f3;
-  final EggCollection egg1;
-  final EggCollection egg2;
+  String day;
+  Feeding feed;
+  EggCollection eggCollection;
 
   //List<Track> tracks;
 
   DailyTask({
     required this.day,
-    required this.f1,
-    required this.f2,
-    required this.f3,
-    required this.egg1,
-    required this.egg2,
+    required this.feed,
+    required this.eggCollection,
     // this.tracks,
   });
 }
 
 class Feeding {
-  final num feedsGrams;
-  final Watering watering;
+  num feedsGrams;
+  Watering watering;
 
   Feeding({
     required this.feedsGrams,
@@ -78,11 +73,11 @@ class Feeding {
 }
 
 class Watering {
-  final num doximol;
-  final num premoxil;
-  final num sulforQr;
-  final num egg1000;
-  final num vitMenPro;
+  num doximol;
+  num premoxil;
+  num sulforQr;
+  num egg1000;
+  num vitMenPro;
 
   Watering({
     required this.doximol,
@@ -94,13 +89,13 @@ class Watering {
 }
 
 class EggCollection {
-  final int numberOfEgg;
-  final int sizeXXL;
-  final int sizeXL;
-  final int sizeL;
-  final int sizeM;
-  final int sizeS;
-  final int sizeXS;
+  int numberOfEgg;
+  int sizeXXL;
+  int sizeXL;
+  int sizeL;
+  int sizeM;
+  int sizeS;
+  int sizeXS;
 
   EggCollection({
     required this.numberOfEgg,
