@@ -151,7 +151,7 @@ class DailyTaskRoute extends StatelessWidget {
         padding: EdgeInsets.all(12),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [Text("$taskName: "), Text("${value} $unit")],
+          children: [Text("$taskName: "), Text("$value $unit")],
         ));
   }
 }

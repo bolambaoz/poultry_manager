@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:poultry_to_list/data/Data.dart';
 import 'package:poultry_to_list/data/model/daily_task.dart';
 
 class EggCollector extends StatelessWidget {
